@@ -22,6 +22,9 @@
   },
   "author": "Dayhanna Campos San Martin",
   "license": "ISC",
+  "bin": {
+    "tu-ruta": "./cli.js"
+  },
   "bugs": {
     "url": "https://github.com/Daianatk/LIM009-fe-md-links/issues"
   },

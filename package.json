@@ -1,0 +1,37 @@
+{
+  "name": "md-links",
+  "version": "1.0.0",
+  "description": "Markdown md-links",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daianatk/LIM009-fe-md-links.git"
+  },
+  "keywords": [
+    "javascript",
+    "library",
+    "npm",
+    "nodejs",
+    "markdown"
+  ],
+  "dependencies": {
+    "jest": "^24.8.0"
+  },
+  "author": "Dayhanna Campos San Martin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daianatk/LIM009-fe-md-links/issues"
+  },
+  "homepage": "https://github.com/Daianatk/LIM009-fe-md-links#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "eslint": "^5.16.0",
+    "eslint-config-node": "^4.0.0"
+  }
+}

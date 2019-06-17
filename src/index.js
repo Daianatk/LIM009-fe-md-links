@@ -63,8 +63,8 @@ const readAllFiles = (route) =>{
       }
   } else { // muestra directorio o archivo que contenga .md
       let dir =fs.readdirSync(route)
-      dir.forEach((hijo) => {
-          const arrNew = readAllFiles(path.join(route, hijo))
+      dir.forEach((child) => {
+          const arrNew = readAllFiles(path.join(route, child))
         arr = arr.concat(arrNew);
       });     
   }

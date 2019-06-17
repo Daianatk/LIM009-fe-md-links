@@ -17,13 +17,11 @@
     "nodejs",
     "markdown"
   ],
-  "dependencies": {
-    "jest": "^24.8.0"
-  },
+  "dependencies": {},
   "author": "Dayhanna Campos San Martin",
   "license": "ISC",
   "bin": {
-    "tu-ruta": "./cli.js"
+    "md-links": "./src/cli.js"
   },
   "bugs": {
     "url": "https://github.com/Daianatk/LIM009-fe-md-links/issues"
@@ -35,6 +33,7 @@
     "@babel/node": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "eslint": "^5.16.0",
-    "eslint-config-node": "^4.0.0"
+    "eslint-config-node": "^4.0.0",
+    "jest": "^24.8.0"
   }
 }

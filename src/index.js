@@ -1,7 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 
-let route= '/Users/Soul/Desktop/LIM009-fe-md-links-master';
+let route= '/Users/Soul/Desktop/LIM009-fe-md-links';
+//let route= '/home/daiana/Desktop/LIM009-fe-md-links';
 
 //Verifica si es Ruta Absoluta=True, sino es Relativa=False
 const isPathAbsolute = (route) => {

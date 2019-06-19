@@ -24,7 +24,7 @@ describe('funcion que indica si es archivo', () => {
     })
     it('deberia fallar si la ruta no existe', () => {
         try {
-            isFile('index')
+            isFile('index');
         } catch(err) {
             expect(err.code).toBe('ENOENT');
         }        
@@ -43,7 +43,7 @@ describe('funcion que indica si es una carpeta', () => {
     })
     it('deberia fallar si la carpeta no existe', () => {
         try {
-            isDirectory('src')
+            isDirectory('src');
         } catch(err) {
             expect(err.code).toBe('ENOENT');
         }      
@@ -55,7 +55,7 @@ describe('funcion que lee un archivo', () => {
         expect(typeof readFile).toBe('function');
     })
     it('deberia leer un archivo', () => {
-        expect(readFile('C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/src/index.js')).toBe("console.log('index');")
+        expect(readFile('C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md')).toBe('Leeme!!!!');
     })
 });
 
@@ -63,8 +63,8 @@ describe('funcion que lee una carpeta', () => {
     it('deberia ser una funcion', () => {
         expect(typeof readDirectory).toBe('function');
     })
-    it('deberia leer una carpeta y retornar el array', () => {
-        expect(readDirectory('C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/src/')).toEqual(["C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/src/cli.js", "C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/src/index.js"])
+    it('deberia leer una carpeta y retornar un array', () => {
+        expect(readDirectory('C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/')).toEqual([ 'C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\README.md']);
     })
 });
 
@@ -73,10 +73,10 @@ describe('Funcion que identifica si es markdown', () => {
         expect(typeof isMarkdown).toBe('function');
     })
     it('deberia retornar true si es markdown', () => {
-        expect(isMarkdown('README.md')).toBe(true)
+        expect(isMarkdown('README.md')).toBe(true);
     })
     it('deberia retornar false si no es markdown', () => {
-        expect(isMarkdown('index.js')).toBe(false)
+        expect(isMarkdown('index.js')).toBe(false);
     })
 });
 
@@ -84,4 +84,7 @@ describe('Funcion que deberia leer todos los archivos .md', () => {
     it('deberia ser una funcion', () => {
         expect(typeof readAllFiles).toBe('function');
     })
-})
+    it('deberia leer una carpeta y retornar el array con archivos .md', () => {
+        expect(readAllFiles('C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/')).toEqual([ 'C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\README.md']);
+    })
+});

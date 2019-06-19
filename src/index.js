@@ -17,61 +17,61 @@ export const isPathAbsolute = (route) => {
       return path.resolve(route);
   }
   //return abs
-}
+};
 //console.log(path.isAbsolute(route));
 
 //Verifica si es Archivo= True, sino es False
 export const isFile = (route) => {
   const stats = fs.statSync(route);
   return stats.isFile();
-}
+};
 //console.log(isFile('index.js'));
 
 //Verifica si es Directorio= True, sino es False
 export const isDirectory = (route) => {
   const stats = fs.statSync(route);
   return stats.isDirectory()
-}
+};
 
 //console.log(isDirectory(route));
 
 //Lee Archivo
 export const readFile = (route) => {
   let file = fs.readFileSync(route, 'utf-8');
-  return file
-}
+  return file;
+};
 //console.log(readFile('index.js'));
 
-//Lee Directorio
+//Lee Directorio y guarda los links en un array
 export const readDirectory = (route) => {
   let arrDirectory = fs.readdirSync(route, 'utf-8');
   return arrDirectory.map((element) => {
-      return path.join(route, element)
-  })
-}
+      return path.join(route, element);
+  });
+};
 //console.log(readDirectory(route));
 
 //Verifica si es un archivo .md= true, sino es False
 export const isMarkdown = (str) => {
   let markdown = path.extname(str) === '.md'
-  return markdown
-}
+  return markdown;
+};
 //console.log(isMarkdown('README.md'));
 
 //Lee todos los archivos buscando archivos .md y los muestra
 export const readAllFiles = (route) => {
-  let arr = [];    
+  let array = [];    
   if (isFile(route)) {
       if(isMarkdown(route)) {
-          arr.push(route)
+          array.push(route)
       }
   } else { // muestra directorio o archivo que contenga .md
       let dir = fs.readdirSync(route)
       dir.forEach((child) => {
-          const arrNew = readAllFiles(path.join(route, child))
-        arr = arr.concat(arrNew);
+          const arrayNew = readAllFiles(path.join(route, child))
+        array = array.concat(arrayNew);
       });     
   }
-  return arr  
-}
+  return array;  
+};
 //console.log(readAllFiles(route));

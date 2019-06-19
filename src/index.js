@@ -1,11 +1,14 @@
-const path = require('path');
-const fs = require('fs');
+import  path from 'path';
+import  fs from 'fs';
+//const path = require('path');
+//const fs = require('fs');
 
-let route= '/Users/Soul/Desktop/LIM009-fe-md-links';
+//let route = 'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links';
+//let route= '/Users/Soul/Desktop/LIM009-fe-md-links';
 //let route= '/home/daiana/Desktop/LIM009-fe-md-links';
 
-//Verifica si es Ruta Absoluta=True, sino es Relativa=False
-const isPathAbsolute = (route) => {
+//Verifica si es Ruta Absoluta=True, sino es Relativa=False y la convierte en absoluta
+export const isPathAbsolute = (route) => {
   let abs = path.isAbsolute(route);
   if(abs){
       return route;
@@ -14,48 +17,48 @@ const isPathAbsolute = (route) => {
   }
   //return abs
 }
-console.log(path.isAbsolute(route));
+//console.log(path.isAbsolute(route));
 
 //Verifica si es Archivo= True, sino es False
-const isFile = (route)=>{
+export const isFile = (route)=>{
   const stats = fs.statSync(route);
   return stats.isFile();
 }
-console.log(isFile('index.js'));
+//console.log(isFile('index.js'));
 
 //Verifica si es Directorio= True, sino es False
-const isDirectory = (route)=>{
+export const isDirectory = (route)=>{
   const stats = fs.statSync(route);
   return stats.isDirectory()
 }
 
-console.log(isDirectory(route));
+//console.log(isDirectory(route));
 
 //Lee Archivo
-const readFile =(route) =>{
+export const readFile =(route) =>{
   let file = fs.readFileSync(route, 'utf-8');
   return file
 }
-console.log(readFile('index.js'));
+//console.log(readFile('index.js'));
 
 //Lee Directorio
-const readDirectory =(route) =>{
+export const readDirectory =(route) =>{
   let arrDirectory = fs.readdirSync(route, 'utf-8');
   return arrDirectory.map((element) => {
-      return  path.join(route , element)
+      return path.join(route , element)
   })
 }
-console.log(readDirectory(route));
+//console.log(readDirectory(route));
 
 //Verifica si es un archivo .md= true, sino es False
-const isMarkdown = (str) => {
+export const isMarkdown = (str) => {
   let markdown = path.extname(str) === '.md'
   return markdown
 }
-console.log(isMarkdown('README.md'));
+//console.log(isMarkdown('README.md'));
 
 //Lee todos los archivos buscando archivos .md y los muestra
-const readAllFiles = (route) =>{
+export const readAllFiles = (route) =>{
   let arr =[];    
   if (isFile(route)) {
       if(isMarkdown(route)){
@@ -70,4 +73,4 @@ const readAllFiles = (route) =>{
   }
   return arr  
 }
-console.log(readAllFiles(route));
+//console.log(readAllFiles(route));

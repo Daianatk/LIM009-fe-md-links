@@ -17,11 +17,15 @@
     "nodejs",
     "markdown"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "marked": "^0.6.2",
+    "node-fetch": "^2.6.0"
+  },
   "author": "Dayhanna Campos San Martin",
   "license": "ISC",
   "bin": {
-    "md-links": "./src/cli.js"
+    "md-links": "lib/cli.js"
   },
   "bugs": {
     "url": "https://github.com/Daianatk/LIM009-fe-md-links/issues"

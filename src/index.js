@@ -75,43 +75,29 @@ const readAllFiles = (route) => {
 // console.log(readAllFiles(route));
 
 //  Lee todos los archivos y muestra href, text y file.
-let extractedLink = (route) => {
+const extractedLink = (route) => {
   let arrayOfFile = readAllFiles(isPathAbsolute(route));
   let arrObj = [];
   arrayOfFile.forEach((filePath) => {
-    const mdContent = readFile(filePath);
+    const mdContent = readFile(filePath).toString();
     let renderer = new mymarked.Renderer(mdContent);
-    renderer.link = (href, __, text) => {
-      arrObj.push({ href, text, file: filePath });
+    renderer.link = (href, title, text) => {
+      arrObj.push({ href: href, text: text.substring(0, 49), file: filePath });
     };
     mymarked(mdContent, { renderer: renderer });
   });
   return arrObj;
 };
-// console.log(extractedLink(route));
+console.log(extractedLink(route));
 
-const validateLink = (route) => {
-  let arrayLinks = extractedLink(route).map(link => {
-    return fetch(link.href)
-      .then(res => {
-        if (res.status <= 399) {
-          link.code = res.status;
-          link.status = res.statusText;
-        } else {
-          link.code = res.status;
-          link.status = 'Fail';
-        }
-        return link;
-      })
-      .catch(element => {
-        link.code = element.code;
-        link.status = 'Fail';
-        return link;
-      });
+/* const validateLink = (route) => {
+  return isMarkdown(route).then(result => {
+    return Promise.all(result.map(readFile)).then(result => {
+      return ([].concat(...result.map(element => (extractedLink(element, route)))));
+    });
   });
-  return Promise.all(arrayLinks);
 };
-console.log(validateLink(route));
+console.log(validateLink(route));*/
 
 module.exports = {
   isPathAbsolute,
@@ -121,6 +107,6 @@ module.exports = {
   readDirectory,
   isMarkdown,
   readAllFiles,
-  extractedLink,
-  validateLink
+  extractedLink
+  // validateLink
 };

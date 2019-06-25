@@ -1,4 +1,4 @@
-import { isPathAbsolute, isFile, isDirectory, readFile, readDirectory, isMarkdown, readAllFiles } from '../src/index.js';
+import { isPathAbsolute, isFile, isDirectory, readFile, readDirectory, isMarkdown, readAllFiles, extractedLink } from '../src/index.js';
 
 describe('funcion que indica si la ruta es absoluta', () => {
   it('deberia ser una funcion', () => {
@@ -86,5 +86,15 @@ describe('Funcion que deberia leer todos los archivos .md', () => {
   });
   it('deberia leer una carpeta y retornar el array con archivos .md', () => {
     expect(readAllFiles('C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/')).toEqual([ 'C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\README.md']);
+  });
+});
+
+describe('Funcion que lee un archivo .md y muestra un array de objetos', () => {
+  it('deberia ser una funcion', () => {
+    expect(typeof extractedLink).toBe('function');
+  });
+  it('deberia leer un archivo .md y mostrar un array de objetos', () => {
+    expect(extractedLink('C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md')).toEqual([ { href: 'https://github.com/Daianatk/md-links', text: 'https://github.com/Daianatk/md-links', file:
+     'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md' } ]);
   });
 });

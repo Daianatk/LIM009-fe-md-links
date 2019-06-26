@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 //  Archivo JS externo con las funciones.
 const mdLinks = require('../src/index.js');
 //  Args proporcionados en CLI
-let route = process.argv[2];
+let route = process.argv[0];
 
 mdLinks.isPathAbsolute(route);
 mdLinks.isFile(route);

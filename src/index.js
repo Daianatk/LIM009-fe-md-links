@@ -79,25 +79,48 @@ const extractedLink = (route) => {
   let arrayOfFile = readAllFiles(isPathAbsolute(route));
   let arrObj = [];
   arrayOfFile.forEach((filePath) => {
-    const mdContent = readFile(filePath).toString();
-    let renderer = new mymarked.Renderer(mdContent);
+    const contentMd = readFile(filePath);
+    let renderer = new mymarked.Renderer();
     renderer.link = (href, title, text) => {
-      arrObj.push({ href: href, text: text.substring(0, 49), file: filePath });
+      arrObj.push({ href: href, text: text, file: filePath });
     };
-    mymarked(mdContent, { renderer: renderer });
+    mymarked(contentMd, { renderer: renderer });
   });
   return arrObj;
 };
 console.log(extractedLink(route));
 
-/* const validateLink = (route) => {
-  return isMarkdown(route).then(result => {
-    return Promise.all(result.map(readFile)).then(result => {
-      return ([].concat(...result.map(element => (extractedLink(element, route)))));
-    });
-  });
+//  Lee todos los archivos y muestra su status y si esta OK o Fail
+const validateLinks = (route) => {
+  const objLinks = extractedLink(route);
+  const runLinks = objLinks.map((val) =>
+    new Promise((resolve) => {
+      const href = fetch(val.href);
+      return href .then((res) => {
+        if (res.status >= 200 && res.status < 400) {
+          val.status = res.status;
+          val.statusText = res.statusText;
+          console.log(val);
+          resolve(val);
+        } else {
+          val.status = res.status,
+          val.statusText = 'Fail';
+          console.log(val);
+          resolve(val);                      
+        }
+      }).catch((error) => {
+        val.status = error.message;
+        val.statusText = 'Fail';
+        console.log(val);
+        resolve(val);
+      });
+    }),
+  );
+  return Promise.all(runLinks);
 };
-console.log(validateLink(route));*/
+
+console.log(validateLinks(route));
+
 
 module.exports = {
   isPathAbsolute,
@@ -107,6 +130,6 @@ module.exports = {
   readDirectory,
   isMarkdown,
   readAllFiles,
-  extractedLink
-  // validateLink
+  extractedLink,
+  validateLinks
 };

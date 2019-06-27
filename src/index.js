@@ -3,7 +3,7 @@ const fs = require('fs');
 const mymarked = require('marked');
 const fetch = require('node-fetch');
 
-let route = 'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md';
+// let route = 'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md';
 //  let route= '/Users/Soul/Desktop/LIM009-fe-md-links';
 //  let route= '/home/daiana/Desktop/LIM009-fe-md-links';
 
@@ -88,7 +88,7 @@ const extractedLink = (route) => {
   });
   return arrObj;
 };
-console.log(extractedLink(route));
+// console.log(extractedLink(route));
 
 //  Lee todos los archivos y muestra su status y si esta OK o Fail
 const validateLinks = (route) => {
@@ -118,9 +118,7 @@ const validateLinks = (route) => {
   );
   return Promise.all(runLinks);
 };
-
 console.log(validateLinks(route));
-
 
 module.exports = {
   isPathAbsolute,

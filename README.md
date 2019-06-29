@@ -2,7 +2,7 @@
 
 ## Diagrama de Flujo
 
-[DF-Markdown](https://github.com/Daianatk/LIM009-fe-md-links/blob/master/img/My-%20Markdown%20Links.jpg)
+(https://github.com/Daianatk/LIM009-fe-md-links/blob/master/img/My-%20Markdown%20Links.jpg)
 
 ## Objetivos
 

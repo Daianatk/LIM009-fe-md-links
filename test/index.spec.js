@@ -55,7 +55,7 @@ describe('funcion que lee un archivo', () => {
     expect(typeof readFile).toBe('function');
   });
   it('deberia leer un archivo', () => {
-    expect(readFile('C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md')).toBe('Leeme!!!! https://github.com/Daianatk/md-links');
+    expect(readFile('C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md')).toBe('Leeme!!!! [Github]https://github.com/Daianatk/md-links [Google]https://www.google.com/searc');
   });
 });
 
@@ -95,6 +95,7 @@ describe('Funcion que lee un archivo .md y muestra un array de objetos', () => {
   });
   it('deberia leer un archivo .md y mostrar un array de objetos', () => {
     expect(extractedLink('C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md')).toEqual([ { href: 'https://github.com/Daianatk/md-links', text: 'https://github.com/Daianatk/md-links', file:
+     'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md' }, { href: 'https://www.google.com/searc', text: 'https://www.google.com/searc', file:
      'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md' } ]);
   });
 });

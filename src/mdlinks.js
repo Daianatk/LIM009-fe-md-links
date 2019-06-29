@@ -18,7 +18,6 @@ const mdLinks = (path, options) => {
           console.log(isMarkdown(path));
           resolve(isMarkdown(path));
         } else {
-          console.log(('No se encontraron archivos .md'));
           resolve('No se encontraron archivos .md');
         };
       } else if (isPathAbsolute(path) && options.validate === true) {
@@ -26,14 +25,12 @@ const mdLinks = (path, options) => {
           console.log(validateLinks(path));
           resolve(validateLinks(path));
         } else {
-          console.log('No se encontraron archivos.md');
           resolve('No se encontraron archivos.md');
         };
       };
     } catch (error) {
       if (error.code === 'ENOENT') {
         let error = chalk.red.bold('Ruta incorrecta');
-        console.log(error);
         reject(error);
       }
     };

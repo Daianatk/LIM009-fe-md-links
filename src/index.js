@@ -3,7 +3,7 @@ const fs = require('fs');
 const mymarked = require('marked');
 const fetch = require('node-fetch');
 
-// let route = 'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md';
+let route = 'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md';
 //  let route= '/Users/Soul/Desktop/LIM009-fe-md-links';
 //  let route= '/home/daiana/Desktop/LIM009-fe-md-links';
 
@@ -116,7 +116,7 @@ const validateLinks = (route) => {
   return Promise.all(runLinks);
 };
 
-// validateLinks(route).then(res => console.log(res));
+validateLinks(route).then(res => console.log(res));
 
 module.exports = {
   isPathAbsolute,

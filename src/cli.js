@@ -1,12 +1,9 @@
 #!/usr/bin/env node
-//  Libreria utilizada para pintar declaraciones en CLI
-const path = require('path');
-const chalk = require('chalk');
-const fetch = require('node-fetch');
 //  Archivo JS externo con las funciones.
-let mdLinks = require('../src/index.js');
+const mdLinks = require('./mdlinks.js');
 //  Args proporcionados en CLI
-let route = process.argv[2];
+const [,, ...args] = process.argv;
+const route = args[0];
 
 mdLinks.isPathAbsolute(route);
 mdLinks.isFile(route);

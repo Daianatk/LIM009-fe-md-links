@@ -100,25 +100,23 @@ const validateLinks = (route) => {
         if (res.status >= 200 && res.status < 400) {
           val.status = res.status;
           val.statusText = res.statusText;
-          console.log(val);
           resolve(val);
         } else {
           val.status = res.status,
           val.statusText = 'Fail';
-          console.log(val);
           resolve(val);                      
         }
       }).catch((error) => {
-        val.status = error.message;
+        val.status = error.message('No Existe');
         val.statusText = 'Fail';
-        console.log(val);
         resolve(val);
       });
     }),
   );
   return Promise.all(runLinks);
 };
-console.log(validateLinks(route));
+
+// validateLinks(route).then(res => console.log(res));
 
 module.exports = {
   isPathAbsolute,

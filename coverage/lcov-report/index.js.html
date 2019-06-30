@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75.81% </span>
+        <span class="strong">72.31% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>47/62</span>
+        <span class='fraction'>47/65</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>12/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75.81% </span>
+        <span class="strong">72.31% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>47/62</span>
+        <span class='fraction'>47/65</span>
       </div>
     </div>
     <p class="quiet">
@@ -176,7 +176,9 @@
 <a name='L128'></a><a href='#L128'>128</a>
 <a name='L129'></a><a href='#L129'>129</a>
 <a name='L130'></a><a href='#L130'>130</a>
-<a name='L131'></a><a href='#L131'>131</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -279,20 +281,22 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -398,7 +402,7 @@ const extractedLink = (route) =&gt; {
 };
 // console.log(extractedLink(route));
 &nbsp;
-//  Lee todos los archivos y muestra su status y si esta OK o Fail
+//  Lee todos los archivos, muestra su status y si esta OK o Fail
 const validateLinks = <span class="fstat-no" title="function not covered" >(r</span>oute) =&gt; {
   const objLinks = <span class="cstat-no" title="statement not covered" >extractedLink(route);</span>
   const runLinks = <span class="cstat-no" title="statement not covered" >objLinks.map(<span class="fstat-no" title="function not covered" >(v</span>al) =&gt;</span>
@@ -408,22 +412,24 @@ const validateLinks = <span class="fstat-no" title="function not covered" >(r</s
 <span class="cstat-no" title="statement not covered" >        if (res.status &gt;= 200 &amp;&amp; res.status &lt; 400) {</span>
 <span class="cstat-no" title="statement not covered" >          val.status = res.status;</span>
 <span class="cstat-no" title="statement not covered" >          val.statusText = res.statusText;</span>
+<span class="cstat-no" title="statement not covered" >          console.log(val);</span>
 <span class="cstat-no" title="statement not covered" >          resolve(val);</span>
         } else {
 <span class="cstat-no" title="statement not covered" >          val.status = res.status,</span>
           val.statusText = 'Fail';
+<span class="cstat-no" title="statement not covered" >          console.log(val);</span>
 <span class="cstat-no" title="statement not covered" >          resolve(val);                      </span>
         }
       }).catch(<span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; {
 <span class="cstat-no" title="statement not covered" >        val.status = error.message('No Existe');</span>
 <span class="cstat-no" title="statement not covered" >        val.statusText = 'Fail';</span>
+<span class="cstat-no" title="statement not covered" >        console.log(error);</span>
 <span class="cstat-no" title="statement not covered" >        resolve(val);</span>
       });
     }),
   );
 <span class="cstat-no" title="statement not covered" >  return Promise.all(runLinks);</span>
 };
-&nbsp;
 // validateLinks(route).then(res =&gt; console.log(res));
 &nbsp;
 module.exports = {
@@ -442,7 +448,7 @@ module.exports = {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jun 29 2019 12:35:08 GMT-0500 (GMT-05:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jun 30 2019 01:02:17 GMT-0500 (GMT-05:00)
 </div>
 </div>
 <script src="prettify.js"></script>

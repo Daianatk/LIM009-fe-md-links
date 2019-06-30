@@ -2,11 +2,11 @@
   "name": "md-links",
   "version": "1.0.0",
   "description": "Markdown md-links",
-  "main": "./index.js",
+  "main": "src/index.js",
   "directories": {
     "example": "example",
     "lib": "lib",
-    "test": "test"
+    "test": "test --coverage"
   },
   "scripts": {
     "test": "jest --coverage",
@@ -32,7 +32,7 @@
   "author": "Dayhanna Campos San Martin",
   "license": "ISC",
   "bin": {
-    "md-links": "./cli.js"
+    "md-links": "src/cli.js"
   },
   "bugs": {
     "url": "https://github.com/Daianatk/LIM009-fe-md-links/issues"

@@ -3,7 +3,7 @@ const fs = require('fs');
 const mymarked = require('marked');
 const fetch = require('node-fetch');
 
-let route = 'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md';
+// let route = 'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md';
 //  let route= '/Users/Soul/Desktop/LIM009-fe-md-links';
 //  let route= '/home/daiana/Desktop/LIM009-fe-md-links';
 
@@ -90,7 +90,7 @@ const extractedLink = (route) => {
 };
 // console.log(extractedLink(route));
 
-//  Lee todos los archivos y muestra su status y si esta OK o Fail
+//  Lee todos los archivos, muestra su status y si esta OK o Fail
 const validateLinks = (route) => {
   const objLinks = extractedLink(route);
   const runLinks = objLinks.map((val) =>
@@ -100,23 +100,25 @@ const validateLinks = (route) => {
         if (res.status >= 200 && res.status < 400) {
           val.status = res.status;
           val.statusText = res.statusText;
+          console.log(val);
           resolve(val);
         } else {
           val.status = res.status,
           val.statusText = 'Fail';
+          console.log(val);
           resolve(val);                      
         }
       }).catch((error) => {
         val.status = error.message('No Existe');
         val.statusText = 'Fail';
+        console.log(error);
         resolve(val);
       });
     }),
   );
   return Promise.all(runLinks);
 };
-
-validateLinks(route).then(res => console.log(res));
+// validateLinks(route).then(res => console.log(res));
 
 module.exports = {
   isPathAbsolute,

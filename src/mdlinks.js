@@ -1,29 +1,25 @@
-//  let route= '/Users/Soul/Desktop/LIM009-fe-md-links';
-//  let route= '/home/daiana/Desktop/LIM009-fe-md-links';
 //  Archivo JS externo con las funciones.
 const { isPathAbsolute } = require('../src/index.js');
 const { isMarkdown } = require('../src/index.js');
 const { readAllFiles } = require('../src/index.js');
 const { validateLinks } = require('../src/index.js');
 const chalk = require('chalk');
-// let route = 'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md';
 
-
-const mdLinks = (path, options) => {
+const mdLinks = (route, options) => {
   return new Promise((resolve, reject) => {
     try {
-      let arrayFile = readAllFiles(path);
-      if (isPathAbsolute(path) && (!options || options.validate === false)) {
+      let arrayFile = readAllFiles(route);
+      if (isPathAbsolute(route) && (!options || options.validate === false)) {
         if (arrayFile.length !== 0) {
-          console.log(isMarkdown(path));
-          resolve(isMarkdown(path));
+          console.log(isMarkdown(route));
+          resolve(isMarkdown(route));
         } else {
           resolve('No se encontraron archivos .md');
         };
-      } else if (isPathAbsolute(path) && options.validate === true) {
+      } else if (isPathAbsolute(route) && options.validate === true) {
         if (arrayFile.length !== 0) {
-          console.log(validateLinks(path));
-          resolve(validateLinks(path));
+          console.log(validateLinks(route));
+          resolve(validateLinks(route));
         } else {
           resolve('No se encontraron archivos.md');
         };
@@ -31,12 +27,11 @@ const mdLinks = (path, options) => {
     } catch (error) {
       if (error.code === 'ENOENT') {
         let error = chalk.red.bold('Ruta incorrecta');
+        console.log(error);
         reject(error);
       }
     };
   });
 };
 
-module.exports = {
-  mdLinks
-};
+module.exports = mdLinks;

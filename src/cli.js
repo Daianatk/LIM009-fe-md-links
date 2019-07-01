@@ -1,18 +1,37 @@
 #!/usr/bin/env node
-//  Library used to color statements in CLI
-const path = require('path');
+// Libraria utilizada para colorear declaraciones en CLI
 const chalk = require('chalk');
-const fetch = require('node-fetch');
 //  Archivo JS externo con las funciones.
-const mdLinks = require('./index.js');
-// const validateLinks = require('./options.js');
+const statsPath = require('./options.js');
+const mdLinks = require('./mdlinks.js');
 //  Args proporcionados en CLI
-let route = process.argv[2];
+const [, , ...args] = process.argv;
+const route = args[0];
 
-mdLinks.isPathAbsolute(route);
-mdLinks.isMarkdown(route);
-mdLinks.readAllFiles(route);
-mdLinks.extractedLink(route);
-mdLinks.validateLinks(route);
-// validateLinks.statsPath(route);
-// mdLinks.mdLinks(route);
+const options = (element, args) => {
+  if (args && args[1] === '--validate') {
+    return `${element.file} ${element.href} ${element.status} ${element.statusText} ${element.text}`;
+  } else if (args === undefined || !args[1]) {
+    return `${element.file} ${element.href} ${element.text}`;
+  }
+};
+
+const optionValidate = (route, args) => {
+  return mdLinks(route, { validate: true }).then(result => {
+    const statsTotal = statsPath(result);
+    const basic = `Total: ${statsTotal.Total} Unique: ${statsTotal.Unique}`;
+    const statsValidate = ` Broken: ${statsTotal.Broken}`;
+    if (args && args[1] === '--stats' && !args[2]) {
+      return chalk.red.yellow(basic);
+    } else if (args && args[1] === '--stats' && args[2] === '--validate') {
+      return chalk.green.bold(basic) + chalk.red.bold(statsValidate);
+    } else {
+      const statsLinks = result.map(element => options(element, args)).toString().replace(/,/g, '\n');
+      return (chalk.black.bold(statsLinks));
+    }
+  });
+};
+
+if (require.main === module) {
+  optionValidate(route, args).then(result => console.log(result));
+}

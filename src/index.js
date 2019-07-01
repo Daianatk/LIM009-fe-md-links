@@ -100,18 +100,18 @@ const validateLinks = (route) => {
         if (res.status >= 200 && res.status < 400) {
           val.status = res.status;
           val.statusText = res.statusText;
-          console.log(val);
+          // console.log(val);
           resolve(val);
         } else {
           val.status = res.status,
           val.statusText = 'Fail';
-          console.log(val);
+          // console.log(val);
           resolve(val);                      
         }
       }).catch((error) => {
         val.status = error.message('No Existe');
         val.statusText = 'Fail';
-        console.log(error);
+        // console.log(error);
         resolve(val);
       });
     }),

@@ -2,7 +2,7 @@
   "name": "md-links",
   "version": "1.0.0",
   "description": "Markdown md-links",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "directories": {
     "example": "example",
     "lib": "lib",
@@ -27,12 +27,13 @@
     "chalk": "^2.4.2",
     "color": "^3.1.2",
     "marked": "^0.6.2",
+    "mock-fs": "^4.10.1",
     "node-fetch": "^2.6.0"
   },
   "author": "Dayhanna Campos San Martin",
   "license": "ISC",
   "bin": {
-    "md-links": "src/cli.js"
+    "md-links": "lib/cli.js"
   },
   "bugs": {
     "url": "https://github.com/Daianatk/LIM009-fe-md-links/issues"
@@ -45,6 +46,7 @@
     "@babel/preset-env": "^7.4.5",
     "eslint": "^5.16.0",
     "eslint-config-node": "^4.0.0",
+    "fetch-mock": "^7.3.3",
     "jest": "^24.8.0"
   }
 }

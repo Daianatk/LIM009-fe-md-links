@@ -93,19 +93,19 @@ las siguientes propiedades:
 ```js
 const mdLinks = require("md-links");
 
-mdLinks("./some/example.md")
+mdLinks("./example/README.md")
   .then(links => {
     // => [{ href, text, file }]
   })
   .catch(console.error);
 
-mdLinks("./some/example.md", { validate: true })
+mdLinks("./example/README.md", { validate: true })
   .then(links => {
     // => [{ href, text, file, status, ok }]
   })
   .catch(console.error);
 
-mdLinks("./some/dir")
+mdLinks("./example")
   .then(links => {
     // => [{ href, text, file }]
   })
@@ -122,10 +122,9 @@ manera a través de la terminal:
 Por ejemplo:
 
 ```sh
-$ md-links ./some/example.md
-./some/example.md http://algo.com/2/3/ Link a algo
-./some/example.md https://otra-cosa.net/algun-doc.html algún doc
-./some/example.md http://google.com/ Google
+$ md-links ./example/README.md
+./example/README.md https://github.com/Daianatk/md-links https://github.com/Daianatk/md-links
+./example/README.md https://www.google.com/searc https://www.google.com/searc
 ```
 
 El comportamiento por defecto no debe validar si las URLs responden ok o no,
@@ -144,11 +143,10 @@ URL que responde ok, entonces consideraremos el link como ok.
 
 Por ejemplo:
 
-```sh13d99df067c1
-$ md-13d99df067c1
-./some/example.md http://algo.com/2/3/ ok 200 Link a algo
-./some/example.md https://otra-cosa.net/algun-doc.html fail 404 algún doc
-./some/example.md http://google.com/ ok 301 Google
+```sh
+$ md-links C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md --validate
+./example/README.md https://github.com/Daianatk/md-links 200 OK https://github.com/Daianatk/md-links
+./example/README.md https://www.google.com/searc 404 Fail https://www.google.com/searc
 ```
 
 Vemos que el _output_ en este caso incluye la palabra `ok` o `fail` después de
@@ -161,17 +159,14 @@ Si pasamos la opción `--stats` el output (salida) será un texto con estadísti
 básicas sobre los links.
 
 ```sh
-$ md-links ./some/example.md --stats
-Total: 3
-Unique: 3
+$ md-links C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md --stats
+Total: 2 Unique: 2
 ```
 
 También podemos combinar `--stats` y `--validate` para obtener estadísticas que
 necesiten de los resultados de la validación.
 
 ```sh
-$ md-links ./some/example.md --stats --validate
-Total: 3
-Unique: 3
-Broken: 1
+$ md-links C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md --stats --validate
+Total: 2 Unique: 2 Broken: 1
 ```

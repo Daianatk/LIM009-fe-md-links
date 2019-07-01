@@ -4,8 +4,9 @@ const mymarked = require('marked');
 const fetch = require('node-fetch');
 
 // let route = 'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md';
-//  let route= '/Users/Soul/Desktop/LIM009-fe-md-links';
-//  let route= '/home/daiana/Desktop/LIM009-fe-md-links';
+// let route= '/Users/Soul/Desktop/LIM009-fe-md-links';
+// let route= '/home/daiana/Desktop/LIM009-fe-md-links';
+// let route= '/home/diana/Desktop/LIM009-fe-md-links/example/README.md'
 
 //  Verifica si es Ruta Absoluta=True, sino es Relativa= False y la convierte en absoluta
 const isPathAbsolute = (route) => {

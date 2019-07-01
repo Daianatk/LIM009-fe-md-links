@@ -10,14 +10,14 @@ fetchMock
 
 beforeEach(() => {
   mock({
-    'prueba': {
-      'README.md': '![Fetch](http://www.wheresrhys.co.uk/fetch-mock/#aboutintroduction) ## Introducción [Fetch](www.wheresrhys.com) fetch-mock permite simular las solicitudes http (www.wheresrhys.com).',
-      'prueba1': {
-        'README.md': '[Markdown](https://es.wikipedia.org/wiki/Markdown)(Es un tipo de archivo con extension).'
+    'example': {
+      'README.md': 'Leeme!!!! ![Github]https://github.com/Daianatk/md-links ![Google]https://www.google.com/searc',
+      'example1': {
+        'README.md': '![Markdown](https://es.wikipedia.org/wiki/Markdown)(Es un tipo de archivo con extension).'
       },
     },
     'lib': {
-      'image.txt': 'hello world',
+      'hello.js': 'hello world',
     }
   });
 });
@@ -40,10 +40,10 @@ describe('funcion que indica si es archivo', () => {
     expect(typeof isFile).toBe('function');
   });
   it('deberia retornar true si es un archivo', () => {   
-    expect(isFile('README.md')).toBe(true);
+    expect(isFile('./README.md')).toBe(true);
   });
   it('deberia retornar false si no es un archivo', () => {
-    expect(isFile('src')).toBe(false);
+    expect(isFile('C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links')).toBe(false);
   });
   it('deberia fallar si la ruta no existe', () => {
     try {
@@ -59,10 +59,10 @@ describe('funcion que indica si es una carpeta', () => {
     expect(typeof isDirectory).toBe('function');
   });
   it('deberia retornar true si es una carpeta', () => {
-    expect(isDirectory('src')).toBe(true);
+    expect(isDirectory('C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links')).toBe(true);
   });
   it('deberia retornar false si no es una carpeta', () => {
-    expect(isDirectory('index.js')).toBe(false);
+    expect(isDirectory('README.md')).toBe(false);
   });
   it('deberia fallar si la carpeta no existe', () => {
     try {
@@ -78,7 +78,7 @@ describe('funcion que lee un archivo', () => {
     expect(typeof readFile).toBe('function');
   });
   it('deberia leer un archivo', () => {
-    expect(readFile('C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md')).toBe('Leeme!!!! [Github]https://github.com/Daianatk/md-links [Google]https://www.google.com/searc');
+    expect(readFile('C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\README.md')).toBe('Leeme!!!! [Github]https://github.com/Daianatk/md-links [Google]https://www.google.com/searc');
   });
 });
 
@@ -87,7 +87,7 @@ describe('funcion que lee una carpeta', () => {
     expect(typeof readDirectory).toBe('function');
   });
   it('deberia leer una carpeta y retornar un array', () => {
-    expect(readDirectory('C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/')).toEqual([ 'C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\README.md']);
+    expect(readDirectory('C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example')).toEqual([ 'C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\README.md']);
   });
 });
 
@@ -108,7 +108,7 @@ describe('Funcion que deberia leer todos los archivos .md', () => {
     expect(typeof readAllFiles).toBe('function');
   });
   it('deberia leer una carpeta y retornar el array con archivos .md', () => {
-    expect(readAllFiles('C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/')).toEqual([ 'C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\README.md']);
+    expect(readAllFiles('C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example')).toEqual([ 'C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\README.md']);
   });
 });
 

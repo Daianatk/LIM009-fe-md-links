@@ -2,7 +2,7 @@
 const { isPathAbsolute } = require('../src/index.js');
 const { isMarkdown } = require('../src/index.js');
 const { readAllFiles } = require('../src/index.js');
-const { validateLinks } = require('../src/index.js');
+const { validateLinks } = require('../src/validate.js');
 const chalk = require('chalk');
 
 const mdLinks = (route, options) => {

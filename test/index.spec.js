@@ -22,10 +22,10 @@ describe('funcion que indica si la ruta es absoluta', () => {
     expect(typeof isPathAbsolute).toBe('function');
   });
   it('deberia retornar true si la ruta es absoluta', () => {
-    expect(isPathAbsolute('C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links')).toBe('C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links');
+    expect(isPathAbsolute(path.join(process.cwd(), 'example', 'README.md'))).toBe(path.join(process.cwd(), 'example', 'README.md'));
   });
   it('deberia retornar una ruta absoluta si es relativa', () => {
-    expect(isPathAbsolute('./README.md')).toBe('C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\README.md');
+    expect(isPathAbsolute('./example/README.md')).toBe(path.join(process.cwd(), 'example', 'README.md'));
   });
 });
 

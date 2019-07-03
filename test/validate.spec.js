@@ -25,7 +25,7 @@ describe('validateLinks', () => {
           text: 'https://www.google.com/searc',
           file: path.join(process.cwd(), 'example/README.md'),
           status: '(NO HAY STATUS PORQUE LINK FALLÓ)',
-          ok: 'fail'
+          ok: 'Fail'
         }]);
       });
   });

@@ -1,32 +1,49 @@
 import { validateLinks } from '../src/validate.js';
-import { readAllFiles } from '../src/index.js';
-import path from 'path';
-import fetchMock from '../__mocks__/node-fetch.js';
-fetchMock.config.sendAsJson = false;
+const fetchMock = require('../__mocks__/node-fetch');
+
+const file = '/home/diana/Desktop/LIM009-fe-md-links/example'
+
+const ouputValidate = [
+    {
+        "file": "/home/diana/Desktop/LIM009-fe-md-links/example/README.md",
+        "href": "https://github.com/Daianatk/md-links",
+        "message": "OK", "status": 200,
+        "text": "https://github.com/Daianatk/md-links"
+    },
+    {
+        "file": "/home/diana/Desktop/LIM009-fe-md-links/example/README.md",
+        "href": "https://www.googler.ts",
+        "message": "Fail",
+        "status": "No existe",
+        "text": "Googler"
+    },
+    {
+        "file": "/home/diana/Desktop/LIM009-fe-md-links/example/README.md",
+        "href": 'https://www.google.com/searc',
+        "text": 'https://www.google.com/searc',
+        "status": 404,
+        "message": 'Fail'
+    },
+]
+
 
 describe('validateLinks', () => {
-  fetchMock
-    .mock('https://github.com/Daianatk/md-links', 200)
-    .mock('https://book.com/404', 404)
-    .mock('https://www.google.com/searc', { throws: 'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md https://www.google.com/searc fail (NO HAY STATUS PORQUE LINK FALLÓ) no' });
-
-  it('debería retornar el código http al hacer la petición http para conocer si el link funciona o no', () => {
-    validateLinks(readAllFiles(path.join(process.cwd(), 'example/README.md')))
-      .then(data => {
-        expect(data).toEqual([{
-          href: 'https://github.com/Daianatk/md-links',
-          text: 'https://github.com/Daianatk/md-links',
-          file: path.join(process.cwd(), 'example/README.md'),
-          status: 200,
-          ok: 'OK'
-        },
-        {
-          href: 'https://www.google.com/searc',
-          text: 'https://www.google.com/searc',
-          file: path.join(process.cwd(), 'example/README.md'),
-          status: '(NO HAY STATUS PORQUE LINK FALLÓ)',
-          ok: 'Fail'
-        }]);
-      });
-  });
-});
+    it('validateLinks deberia ser una funcion', () => {
+        expect(typeof validateLinks).toBe('function');
+    })
+    it('Deberia regresar un objeto con los datos de los links', (done) => {
+        fetchMock
+            .mock("https://github.com/Daianatk/md-links", 200)
+            .mock("http://community.laboratoria.la/t/modulos-librerias-paquetes-frameworks-cual-es-la-diferencia/175", 200)
+            .mock("https://www.googler.ts", "No existe")
+            .mock("https://www.google.com/searc", 404)
+            .mock('*', 200)
+        const ApliValidateLinks = validateLinks(file)
+        ApliValidateLinks.then(response => {
+            expect(response).toEqual(ouputValidate);
+            done();
+        })
+            .catch(error => done());
+    })
+    
+})

@@ -81,7 +81,7 @@ describe('funcion que lee una carpeta', () => {
     expect(typeof readDirectory).toBe('function');
   });
   it('deberia leer una carpeta y retornar un array', () => {
-    expect(readDirectory('C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example')).toEqual(['C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\README.md', 'C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\example1']);
+    expect(readDirectory(path.join(process.cwd(),'example'))).toEqual([path.join(process.cwd(),'example','README.md'), path.join(process.cwd(),'example','example1')]);
   });
 });
 
@@ -102,7 +102,7 @@ describe('Funcion que deberia leer todos los archivos .md', () => {
     expect(typeof readAllFiles).toBe('function');
   });
   it('deberia leer una carpeta y retornar el array con archivos .md', () => {
-    expect(readAllFiles('C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\example1')).toEqual([ 'C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\example1\\README.md']);
+    expect(readAllFiles(path.join(process.cwd(),'example1'))).toEqual([path.join(process.cwd(),'example1','README.md'), path.join(process.cwd(),'README.md')]);
   });
 });
 

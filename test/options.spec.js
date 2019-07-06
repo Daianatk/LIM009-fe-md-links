@@ -17,7 +17,7 @@ const mock = [{
   file: path.join(process.cwd(), 'example\\README.md'),
 },
 {
-  href: 'https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg',
+  href: 'https://user-images.githubusercontent.com',
   text: 'md-links',
   file: path.join(process.cwd(), 'example\\README.md'),
 }];
@@ -45,7 +45,7 @@ const validations = [{
   statusText: 'Fail',
 },
 {
-  href: 'https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg',
+  href: 'https://user-images.githubusercontent.com',
   text: 'md-links',
   file: path.join(process.cwd(), 'example\\README.md'),
   status: 200,
@@ -54,7 +54,7 @@ const validations = [{
 
 const output2 = { Total: 4, Unique: 4, Broken: 1 };
 
-describe('Prueba de la función options ', () => {
+describe('Función options ', () => {
   it('options cuando solo se adjunta --stats', () => {
     expect(options(mock)).toEqual(output1);
   });

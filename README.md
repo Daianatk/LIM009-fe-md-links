@@ -4,6 +4,23 @@
 
 ![MD-Links](https://github.com/Daianatk/LIM009-fe-md-links/blob/master/img/My-%20Markdown%20Links.jpg)
 
+## Instalaciòn
+
+Puede instalar la librería de la siguiente forma npm i daiana-md-links
+
+## Guia de Uso
+
+El ejecutable de nuestra aplicación debe poder ejecutarse de la siguiente manera.
+
+md-links <path-to-file> [options] (--stats ò --validate / --stats --validate)
+Ejemplo:
+ $ md-links ./example/README.md --stats --validate
+
+Argumentos
+path: Ruta absoluta o relativa al archivo o directorio.
+options: Un objeto con las siguientes propiedades:
+validate: Booleano que determina si se desea validar los links encontrados(true o false).
+
 ## Objetivos
 
 El objetivo práctico de este proyecto es que aprendas cómo crear tu propia

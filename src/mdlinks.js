@@ -11,14 +11,12 @@ const mdLinks = (route, options) => {
       let arrayFile = readAllFiles(route);
       if (isPathAbsolute(route) && (!options || options.validate === false)) {
         if (arrayFile.length !== 0) {
-          // console.log(isMarkdown(route));
           resolve(isMarkdown(route));
         } else {
           resolve(chalk.red.bold('No se encontraron archivos .md'));
         };
       } else if (isPathAbsolute(route) && options.validate === true) {
         if (arrayFile.length !== 0) {
-          // console.log(validateLinks(route));
           resolve(validateLinks(route));
         } else {
           resolve(chalk.red.bold('No se encontraron archivos.md'));
@@ -27,7 +25,6 @@ const mdLinks = (route, options) => {
     } catch (error) {
       if (error.code === 'ENOENT') {
         let error = chalk.red.bold('Ruta incorrecta');
-        // console.log(error);
         reject(error);
       }
     };

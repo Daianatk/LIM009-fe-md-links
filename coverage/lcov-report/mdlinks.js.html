@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for validate.js</title>
+    <title>Code coverage report for mdlinks.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="index.html">All files</a> validate.js
+      <a href="index.html">All files</a> mdlinks.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">84.21% </span>
+        <span class="strong">90.48% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>16/19</span>
+        <span class='fraction'>19/21</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">73.33% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>11/15</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>4/4</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">80% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/5</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">84.21% </span>
+        <span class="strong">90.48% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>16/19</span>
+        <span class='fraction'>19/21</span>
       </div>
     </div>
     <p class="quiet">
@@ -79,76 +79,73 @@
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const fetch = require('node-fetch');
-const { extractedLink } = require('../src/index.js');
-//  Lee todos los archivos, muestra su status y si esta OK o Fail
-const validateLinks = (route) =&gt; {
-  const objLinks = extractedLink(route);
-  const runLinks = objLinks.map((val) =&gt;
-    new Promise((resolve) =&gt; {
-      const href = fetch(val.href);
-      return href .then((res) =&gt; {
-        if (res.status &gt;= 200 &amp;&amp; res.status &lt; 400) {
-          val.status = res.status;
-          val.statusText = res.statusText;
-          // console.log(val);
-          resolve(val);
-        } else {
-          val.status = res.status,
-          val.statusText = 'Fail';
-          // console.log(val);
-          resolve(val);                      
-        }
-      }).catch(<span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; {
-<span class="cstat-no" title="statement not covered" >        val.status = error.message('No Existe');</span>
-<span class="cstat-no" title="statement not covered" >        val.statusText = 'Fail';</span>
-        // console.log(error);
-<span class="cstat-no" title="statement not covered" >        resolve(val);</span>
-      });
-    }),
-  );
-  return Promise.all(runLinks);
-};
-// validateLinks(route).then(res =&gt; console.log(res));
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span></td><td class="text"><pre class="prettyprint lang-js">//  Archivo JS externo con las funciones.
+const { isPathAbsolute } = require('../src/index.js');
+const { isMarkdown } = require('../src/index.js');
+const { readAllFiles } = require('../src/index.js');
+const { validateLinks } = require('../src/validate.js');
+const chalk = require('chalk');
 &nbsp;
-module.exports = {
-  validateLinks
-};</pre></td></tr>
+const mdLinks = (route, options) =&gt; {
+  return new Promise((resolve, reject) =&gt; {
+    try {
+      let arrayFile = readAllFiles(route);
+      if (isPathAbsolute(route) &amp;&amp; (!options || options.validate === false)) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (arrayFile.length !== 0) {
+          resolve(isMarkdown(route));
+        } else {
+<span class="cstat-no" title="statement not covered" >          resolve(chalk.red.bold('No se encontraron archivos .md'));</span>
+        };
+      } else <span class="missing-if-branch" title="else path not taken" >E</span>if (isPathAbsolute(route) &amp;&amp; options.validate === true) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (arrayFile.length !== 0) {
+          resolve(validateLinks(route));
+        } else {
+<span class="cstat-no" title="statement not covered" >          resolve(chalk.red.bold('No se encontraron archivos.md'));</span>
+        };
+      };
+    } catch (error) {
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (error.code === 'ENOENT') {
+        let error = chalk.red.bold('Ruta incorrecta');
+        reject(error);
+      }
+    };
+  });
+};
+&nbsp;
+module.exports = mdLinks;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->

@@ -102,7 +102,7 @@ describe('Funcion que deberia leer todos los archivos .md', () => {
     expect(typeof readAllFiles).toBe('function');
   });
   it('deberia leer una carpeta y retornar el array con archivos .md', () => {
-    expect(readAllFiles(path.join(process.cwd(),'example1'))).toEqual([path.join(process.cwd(),'example1','README.md'), path.join(process.cwd(),'README.md')]);
+    expect(readAllFiles(path.join(process.cwd(), 'example'))).toEqual([path.join(process.cwd(), 'example', 'README.md'), path.join(process.cwd(), 'example/example1', 'README.md')]);
   });
 });
 
@@ -111,8 +111,8 @@ describe('Funcion que lee un archivo .md y muestra un array de objetos', () => {
     expect(typeof extractedLink).toBe('function');
   });
   it('deberia leer un archivo .md y mostrar un array de objetos', () => {
-    expect(extractedLink('C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\README.md')).toEqual([ { href: 'https://github.com/Daianatk/md-links', text: 'https://github.com/Daianatk/md-links', file:
-     'C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\README.md' }, { href: 'https://www.google.com/searc', text: 'https://www.google.com/searc', file:
-     'C:\\Users\\Programaciòn\\Desktop\\LIM009-fe-md-links\\example\\README.md' } ]);
+    expect(extractedLink('/home/diana/Desktop/LIM009-fe-md-links/example/README.md')).toEqual([ { href: 'https://github.com/Daianatk/md-links', text: 'https://github.com/Daianatk/md-links', file:
+     '/home/diana/Desktop/LIM009-fe-md-links/example/README.md' }, { href: 'https://www.google.com/searc', text: 'https://www.google.com/searc', file:
+     '/home/diana/Desktop/LIM009-fe-md-links/example/README.md' } ]);
   });
 });

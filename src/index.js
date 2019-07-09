@@ -2,11 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const mymarked = require('marked');
 
-// let route = 'C:/Users/Programaciòn/Desktop/LIM009-fe-md-links/example/README.md';
-// let route= '/Users/Soul/Desktop/LIM009-fe-md-links';
-// let route= '/home/daiana/Desktop/LIM009-fe-md-links';
-// let route= '/home/diana/Desktop/LIM009-fe-md-links/example/README.md'
-
 //  Verifica si es Ruta Absoluta=True, sino es Relativa= False y la convierte en absoluta
 const isPathAbsolute = (route) => {
   if (path.isAbsolute(route)) {
@@ -15,29 +10,24 @@ const isPathAbsolute = (route) => {
     return path.resolve(route);
   };
 };
-// console.log(path.isAbsolute(route));
-// console.log(path.resolve(route));
 
 //  Verifica si es Archivo= True, sino es False
 const isFile = (route) => {
   const stats = fs.statSync(route);
   return stats.isFile();
 };
-//  console.log(isFile('./example/README.md'));
 
 //  Verifica si es Directorio= True, sino es False
 const isDirectory = (route) => {
   const stats = fs.statSync(route);
   return stats.isDirectory();
 };
-//  console.log(isDirectory('./example'));
 
 //  Lee Archivo
 const readFile = (route) => {
   let file = fs.readFileSync(route, 'utf-8');
   return file;
 };
-// console.log(readFile('./example/README.md'));
 
 //  Lee Directorio y guarda los links en un array
 const readDirectory = (route) => {
@@ -46,14 +36,12 @@ const readDirectory = (route) => {
     return path.join(route, element);
   });
 };
-// console.log(readDirectory('./example'));
 
 //  Verifica si es un archivo .md= true, sino es False
 const isMarkdown = (str) => {
   let markdown = path.extname(str) === '.md';
   return markdown;
 };
-// console.log(isMarkdown('./example/README.md'));
 
 //  Lee todos los archivos buscando archivos .md y los muestra
 const readAllFiles = (route) => {
@@ -71,7 +59,6 @@ const readAllFiles = (route) => {
   }
   return array;  
 };
-// console.log(readAllFiles(route));
 
 //  Lee todos los archivos y muestra href, text y file.
 const extractedLink = (route) => {
@@ -87,7 +74,6 @@ const extractedLink = (route) => {
   });
   return arrObj;
 };
-// console.log(extractedLink(route));
 
 module.exports = {
   isPathAbsolute,

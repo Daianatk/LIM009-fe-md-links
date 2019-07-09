@@ -1,12 +1,12 @@
 {
-  "name": "md-links",
+  "name": "daiana-md-links",
   "version": "1.0.0",
   "description": "Markdown md-links",
   "main": "lib/index.js",
   "directories": {
     "example": "example",
     "lib": "lib",
-    "test": "test --coverage"
+    "test": "test"
   },
   "scripts": {
     "test": "jest --coverage",
@@ -24,13 +24,14 @@
     "markdown"
   ],
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "chalk": "^2.4.2",
     "marked": "^0.6.2",
     "mock-fs": "^4.10.1",
     "node-fetch": "^2.6.0"
   },
   "author": "Dayhanna Campos San Martin",
-  "license": "ISC",
+  "license": "MIT",
   "bin": {
     "md-links": "lib/cli.js"
   },
@@ -41,11 +42,16 @@
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
-    "@babel/node": "^7.4.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "eslint": "^5.16.0",
-    "eslint-config-node": "^4.0.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
     "fetch-mock": "^7.3.3",
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "jest-fetch-mock": "^2.1.2"
   }
 }
